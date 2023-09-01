@@ -1,4 +1,4 @@
-# LGAutoRenewDevelopesMode
+# LGAutoRenewDeveloperMode
 Home assistant script to automatically renew the developer mode on WebOS
 
 LG Developer mode allow us to instal multiple external apps that arent available in the LG store.
