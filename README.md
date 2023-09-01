@@ -8,6 +8,24 @@ This value can be extended at any time in the tv but must be manual, this create
 To avoid this i build this script with junction with node red to automatically extend every day.
 The main disadvantage of this script is that we have to turn on the TV and do the actions to navigate the menus.
 
+
+## Requirements:
+
+Already having the [Developer Mode app](https://webostv.developer.lge.com/develop/getting-started/developer-mode-app#installing-developer-mode-app)  in the TV and a [LG developer accout](https://webostv.developer.lge.com/develop/getting-started/preparing-lg-account)
+
+
+
+Having the wake on Lan to the Home Assistant configuration.yaml
+
+Add the following in your configuration.yaml
+ ```yaml
+    wake_on_lan:
+```
+![Architecture Diagram](img/configurationYAML.png)
+
+
+
+
 ## Home Assistant Script:
 
 **Process**:
@@ -46,19 +64,4 @@ _Note: Do not to Forget to select you devices in the script as currently is poin
 Example:
 
 ![Architecture Diagram](img/nodeRedFlow.png)
-
-
-## Requirements:
-
-Already having the [Developer Mode app](https://webostv.developer.lge.com/develop/getting-started/developer-mode-app#installing-developer-mode-app)  in the TV and a [LG developer accout](https://webostv.developer.lge.com/develop/getting-started/preparing-lg-account)
-
-
-
-Having the wake on Lan to the Home Assistant configuration.yaml
-
-Add the following in your configuration.yaml
- ```yaml
-    wake_on_lan:
-```
-![Architecture Diagram](img/configurationYAML.png)
 
