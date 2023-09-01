@@ -3,6 +3,7 @@ Home assistant script to automatically renew the developer mode on WebOS
 
 LG Developer mode allow us to instal multiple external apps that arent available in the LG store.
 the main drowabck is that LG only allow the developer mode active for a certain amount of time, before was 50h, now they have changed it to 999h (~41 days).
+
 This value can be extended at any time in the tv but must be manual, this created the issue that multiple time i forgot to extend and lost access to all the custom installed apps.
 To avoid this i build this script with junction with node red to automatically extend every day.
 The main disadvantage of this script is that we have to turn on the TV and do the actions to navigate the menus.
