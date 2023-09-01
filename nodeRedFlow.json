@@ -1,0 +1,165 @@
+[
+    {
+        "id": "452b41b62486cbd0",
+        "type": "tab",
+        "label": "Scripts Execution",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6818e4655d6508ea",
+        "type": "inject",
+        "z": "452b41b62486cbd0",
+        "name": "Everyday 04:00",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "currentDay",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 04 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "26a8db14e90450b8"
+            ]
+        ]
+    },
+    {
+        "id": "7590bc63dfeefd41",
+        "type": "switch",
+        "z": "452b41b62486cbd0",
+        "name": "",
+        "property": "currentDay",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 60,
+        "wires": [
+            [
+                "596c88311af0937c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "596c88311af0937c",
+        "type": "api-call-service",
+        "z": "452b41b62486cbd0",
+        "name": "",
+        "server": "71b1698a.a90b58",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "script",
+        "service": "extend_web_os_dev",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 620,
+        "y": 60,
+        "wires": [
+            [
+                "3258fc299a445d0b"
+            ]
+        ]
+    },
+    {
+        "id": "3258fc299a445d0b",
+        "type": "api-call-service",
+        "z": "452b41b62486cbd0",
+        "name": "Notify Ricardo - WEBOS dev",
+        "server": "71b1698a.a90b58",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "notify",
+        "service": "mobile_app_sm_s901b",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"message\":\"Extendeu o Modo Developer da TV da SALA\",\"data\":{\"push\":{\"badge\":5,\"category\":\"Estores\"}}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 900,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26a8db14e90450b8",
+        "type": "function",
+        "z": "452b41b62486cbd0",
+        "name": "Logic",
+        "func": "var currentDate = new Date();\nmsg.currentDay = currentDate.getDate();\n\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 60,
+        "wires": [
+            [
+                "7590bc63dfeefd41"
+            ]
+        ]
+    },
+    {
+        "id": "71b1698a.a90b58",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    }
+]

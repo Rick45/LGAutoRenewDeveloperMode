@@ -1,0 +1,43 @@
+alias: Extend WebOS Dev
+sequence:
+  - service: wake_on_lan.send_magic_packet
+    data:
+      broadcast_port: 9
+      mac: 24-E8-53-91-BE-7E
+      broadcast_address: 192.168.0.101
+  - wait_template: "{{ is_state(\"media_player.lg_webos_tv_b944\", \"on\") }}"
+    timeout: "10"
+    continue_on_timeout: true
+  - service: media_player.select_source
+    data:
+      source: Developer Mode
+    target:
+      entity_id: media_player.lg_webos_tv_oled65c11lb
+  - wait_template: >-
+      {{ is_state_attr("media_player.lg_webos_tv_b944", "source", "Developer
+      Mode") }}
+    timeout: "10"
+    continue_on_timeout: true
+  - service: webostv.button
+    data:
+      entity_id: media_player.lg_webos_tv_oled65c11lb
+      button: DOWN
+  - service: webostv.button
+    data:
+      entity_id: media_player.lg_webos_tv_oled65c11lb
+      button: DOWN
+  - service: webostv.button
+    data:
+      entity_id: media_player.lg_webos_tv_oled65c11lb
+      button: ENTER
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: media_player.turn_off
+    data: {}
+    target:
+      entity_id: media_player.lg_webos_tv_oled65c11lb
+mode: single
+icon: mdi:dev-to
